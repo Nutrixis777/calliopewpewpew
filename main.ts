@@ -1,15 +1,3 @@
-radio.onReceivedString(function (sheesh) {
-    basic.setLedColor(0x00ffff)
-    basic.showIcon(IconNames.Yes)
-    basic.showLeds(`
-        . . . . .
-        . . . . .
-        . . . . .
-        . . . . .
-        . . . . .
-        `)
-    basic.showString("sheesh")
-})
 input.onButtonPressed(Button.A, function () {
     radio.setGroup(10)
     basic.showLeds(`
@@ -20,9 +8,7 @@ input.onButtonPressed(Button.A, function () {
         . . # . .
         `)
     basic.pause(100)
-    for (let index = 0; index < 1; index++) {
-        radio.sendString("nx7")
-    }
+    radio.sendString("nx7")
 })
 radio.onReceivedString(function (nx7) {
     basic.setLedColor(0x00ffff)
@@ -46,7 +32,17 @@ input.onButtonPressed(Button.B, function () {
         . . # . .
         `)
     basic.pause(100)
-    for (let index = 0; index < 1; index++) {
-        radio.sendString("sheesh")
-    }
+    radio.sendValue("sheesh", 1)
+})
+radio.onReceivedValue(function (name, value) {
+    basic.setLedColor(0x00ffff)
+    basic.showIcon(IconNames.Yes)
+    basic.showLeds(`
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        `)
+    basic.showString("sheesh")
 })
